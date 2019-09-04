@@ -18,7 +18,7 @@ import numpy as np
 import time
 
 from torrequest import TorRequest
-tr=TorRequest(password='persepolis99')
+tr=TorRequest(password='<unhashed_password>')
 
 def generate_intervals(overlap:int=20, inc:int=265) -> list:
     to_str = lambda dt_date : datetime.strftime(dt_date, "%Y-%m-%d")
