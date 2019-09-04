@@ -69,7 +69,7 @@ def get_frame(q:str, time:str) -> pd.DataFrame:
     params_1 = urllib.parse.urlencode(params_1).replace("+", "%20")
     csv_url = 'https://trends.google.com/trends/api/widgetdata/multiline/csv?' + params_1
     result = opener.open(csv_url).read().decode('utf8')
-    return pd.read_csv(io.StringIO(result), skiprows=range(0,1), index_col=0, header=0)
+    return pd.read_csv(io.StringIO(result), skiprows=range(0,1), index_col=0, header=0).asfreq("d")
 
 def collect_frames(q:str) -> list:
     intervals = generate_intervals()
