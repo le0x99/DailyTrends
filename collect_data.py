@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Sep  2 14:19:57 2019
 
-@author: Leonard
-"""
 
 import io
 from datetime import datetime
@@ -90,41 +84,4 @@ def collect_frames(q:str) -> list:
 
 frames = collect_frames("clinuvel")
 
-
-def aggr(x1, x2):
-    """ Input 2 dataframes with exactly 1 column, which is indexed."""
-    """ Note : t(x1) << t(x2)"""
-    #Find common
-    common = pd.merge(x1, x2, left_index=True, right_index=True)
-    print("Potential Ratio Points : ", len(common))
-    #Drop Inf and 0
-    common = common.replace([np.inf, -np.inf, 0], np.nan).dropna()
-    print("Usable Ratio Points : ", len(common))
-    if len(common) < 1:
-        raise ValueError("Ratio could not be calculated, try bigger overlap.")
-    #Calc Ratio
-    common["ratio"] = common[common.columns[0]] / common[common.columns[1]]
-    ratio = common["ratio"].value_counts().idxmax()
-    df = x1.append(x2.drop(pd.merge(x1, x2, left_index=True, right_index=True).index)*ratio)
-    if ratio > 1:
-        return df/max(df[df.columns[0]])*100
-    return df
-
-def qAggr(*args):
-    """convienent function to multi-aggregate n data pieces"""
-    """IMPORTANT : input needs to be ordered where t(args[0]) < t(args[1]) < ... < t(args[-1])"""
-    df = aggr(args[0], args[1])
-    for x in args[2:]:
-        df = aggr(df, x)
-    return df
-
-from IPython.display import display_html
-def display_side_by_side(*args):
-    html_str=''
-    for df in args:
-        html_str+=df.to_html()
-    display_html(html_str.replace('table','table style="display:inline"'),raw=True)
-            
-        
-    
 
