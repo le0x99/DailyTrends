@@ -1,9 +1,7 @@
-
 import numpy as np
 import pandas as pd
 import random
 from rescaler import aggr, qAggr
-from IPython.display import display_html
 
 
 ### Create toy dfs to check consistency of the rescaler
