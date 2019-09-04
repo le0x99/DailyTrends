@@ -27,4 +27,4 @@ def qAggr(frames:list) -> pd.DataFrame:
     df = aggr(frames[0], frames[1])
     for x in frames[2:]:
         df = aggr(df, x)
-    return df
+    return df.asfreq("D")
