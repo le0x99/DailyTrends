@@ -79,6 +79,5 @@ def collect_frames(q:str) -> list:
         frames.append(df)
     return frames
 
-frames = collect_frames("clinuvel")
 
 
