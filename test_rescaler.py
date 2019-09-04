@@ -16,7 +16,8 @@ df = pd.DataFrame({"x" : [ drawer() for _ in range(284)]},
                           index = pd.date_range(start="1/1/2004", end="10/10/2004", freq="d"))
 
 #MaxScale the frames
-def MaxScale(df:pd.DataFrame) -> pd.DataFrame: return (df/df.values.max() * 100)
+def MaxScale(_:pd.DataFrame or pd.Series ) -> pd.DataFrame:
+    return (_/_.values.max() * 100) if type(_) == pd.Series else pd.DataFrame( { col : MaxScale(_[col]) for col in _.columns })
 
 scaled_df = MaxScale(df)
 
