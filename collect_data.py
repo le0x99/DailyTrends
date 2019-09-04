@@ -3,7 +3,7 @@
 import io
 from datetime import datetime
 from dateutil.relativedelta import relativedelta as delta
-import requestsx
+import requests
 import urllib
 import json
 import random
