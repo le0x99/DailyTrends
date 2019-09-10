@@ -11,12 +11,17 @@ import pandas as pd
 import numpy as np
 import time
 
-def generate_intervals(overlap:int=20, inc:int=265) -> list:
+def generate_intervals(overlap:int=20,
+                       inc:int=265,
+                      start:str="2004-01-01") -> list:
+    """ 
+    start defaults to "2004-01-01", which represents the entire series.
+    Format : "YYYY-MM-DD"  
+    """
     to_str = lambda dt_date : datetime.strftime(dt_date, "%Y-%m-%d")
     to_dt = lambda str_date : datetime.strptime(str_date, "%Y-%m-%d")
     n_iter = 23
     intervals = []
-    start = "2004-01-01"
     for i in range(n_iter):
         start = "2004-01-01" if i == 0 else to_str(to_dt(end) + delta(days=-overlap))
         end = to_str(to_dt(start) + delta(days=+inc))
