@@ -1,7 +1,4 @@
-import pandas as pd
-import numpy as np
-
-        
+    
 def aggr(x1:pd.DataFrame, x2:pd.DataFrame) -> pd.DataFrame:
     """ Input 2 dataframes with exactly 1 column, which is indexed."""
     """ Note : t(x1) << t(x2)"""
@@ -22,7 +19,7 @@ def aggr(x1:pd.DataFrame, x2:pd.DataFrame) -> pd.DataFrame:
     return df
 
 def qAggr(frames:list) -> pd.DataFrame:
-    """convienent function to multi-aggregate n data pieces"""
+    """convienent function to quick-aggregate n data pieces"""
     """IMPORTANT : input needs to be ordered where t(args[0]) < t(args[1]) < ... < t(args[-1])"""
     df = aggr(frames[0], frames[1])
     for x in frames[2:]:
