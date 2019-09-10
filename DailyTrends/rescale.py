@@ -1,15 +1,16 @@
 import pandas as pd
 import numpy as np   
 
-def aggr(x1:pd.DataFrame, x2:pd.DataFrame) -> pd.DataFrame:
+def aggr(x1:pd.DataFrame,
+         x2:pd.DataFrame, verbose:bool=False) -> pd.DataFrame:
     """ Input 2 dataframes with exactly 1 column, which is indexed."""
     """ Note : t(x1) << t(x2)"""
     #Find common
     common = pd.merge(x1, x2, left_index=True, right_index=True)
-    print("Potential Ratio Points : ", len(common))
+    print("Potential Ratio Points : ", len(common)) if verbose else None
     #Drop Inf and 0
     common = common.replace([np.inf, -np.inf, 0], np.nan).dropna()
-    print("Usable Ratio Points : ", len(common))
+    print("Usable Ratio Points : ", len(common)) if verbose else None
     if len(common) < 1:
         raise ValueError("Ratio could not be calculated, try bigger overlap.")
     #Calc Ratio
