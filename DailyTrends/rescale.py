@@ -1,4 +1,6 @@
-    
+import pandas as pd
+import numpy as np   
+
 def aggr(x1:pd.DataFrame, x2:pd.DataFrame) -> pd.DataFrame:
     """ Input 2 dataframes with exactly 1 column, which is indexed."""
     """ Note : t(x1) << t(x2)"""
