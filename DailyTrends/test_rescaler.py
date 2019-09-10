@@ -1,7 +1,4 @@
-import numpy as np
-import pandas as pd
-import random
-from rescaler import aggr, qAggr
+from DailyTrends.rescale import aggr, qAggr
 
 
 ### Create toy dfs to check consistency of the rescaler
