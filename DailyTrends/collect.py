@@ -1,4 +1,5 @@
-
+import pandas as pd
+import numpy as np
 
 from DailyTrends.request import collect_frames
 from DailyTrends.rescale import qAggr
