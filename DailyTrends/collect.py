@@ -16,7 +16,7 @@ def collect_data(q:str,
     return df if not save else df.to_csv(dest)
   elif type(q) == list:
     return reduce(lambda left,right: pd.merge(left,right,left_index=True, right_index=True),
-                  [collect_data(i) for i in q])
+                  [collect_data(i, save, dest) for i in q])
   else:
     raise TypeError("Use string for single query search / list of strings for multiple keywoards.")
     
