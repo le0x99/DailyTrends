@@ -17,9 +17,7 @@ def aggr(x1:pd.DataFrame,
     common["ratio"] = common[common.columns[0]] / common[common.columns[1]]
     ratio = common["ratio"].value_counts().idxmax()
     df = x1.append(x2.drop(pd.merge(x1, x2, left_index=True, right_index=True).index)*ratio)
-    if ratio > 1:
-        return df/max(df[df.columns[0]])*100
-    return df
+    return df/max(df[df.columns[0]])*100 if ratio > 1 else df
 
 def qAggr(frames:list, verbose:bool=False) -> pd.DataFrame:
     """convienent function to quick-aggregate n data pieces"""
