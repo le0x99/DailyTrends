@@ -11,7 +11,7 @@ import time
 from tqdm import tqdm
 
 def generate_intervals(overlap:int=40,
-                       inc:int=280,
+                       inc:int=265,
                       start:str="2004-01-01") -> list:
     """ 
     start defaults to "2004-01-01", which represents the entire series.
@@ -26,7 +26,6 @@ def generate_intervals(overlap:int=40,
         end = to_str(to_dt(start) + delta(days=+inc))
         intervals.append(start + " " + end)  
     return intervals
-        
 
 def get_frame(q:str, time:str) -> pd.DataFrame:
     jar = requests.get("https://trends.google.com/").cookies
