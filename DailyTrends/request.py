@@ -10,8 +10,8 @@ import numpy as np
 import time
 from tqdm import tqdm
 
-def generate_intervals(overlap:int=60,
-                       inc:int=285,
+def generate_intervals(overlap:int=40,
+                       inc:int=265,
                       start:str="2004-01-01") -> list:
     """ 
     start defaults to "2004-01-01", which represents the entire series.
