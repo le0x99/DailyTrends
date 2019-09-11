@@ -10,8 +10,8 @@ import numpy as np
 import time
 from tqdm import tqdm
 
-def generate_intervals(overlap:int=20,
-                       inc:int=265,
+def generate_intervals(overlap:int=50,
+                       inc:int=300,
                       start:str="2004-01-01") -> list:
     """ 
     start defaults to "2004-01-01", which represents the entire series.
@@ -19,7 +19,7 @@ def generate_intervals(overlap:int=20,
     """
     to_str = lambda dt_date : datetime.strftime(dt_date, "%Y-%m-%d")
     to_dt = lambda str_date : datetime.strptime(str_date, "%Y-%m-%d")
-    n_iter = 23
+    n_iter = 25
     intervals = []
     for i in range(n_iter):
         start = "2004-01-01" if i == 0 else to_str(to_dt(end) + delta(days=-overlap))
