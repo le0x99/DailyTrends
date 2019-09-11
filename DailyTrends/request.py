@@ -8,6 +8,7 @@ import random
 import pandas as pd
 import numpy as np
 import time
+from tqdm import tqdm
 
 def generate_intervals(overlap:int=20,
                        inc:int=265,
@@ -74,7 +75,7 @@ def get_frame(q:str, time:str) -> pd.DataFrame:
 def collect_frames(q:str) -> list:
     intervals = generate_intervals()
     frames = []
-    for interval in intervals:
+    for interval in tqdm(intervals):
         df = get_frame(q, interval)
         time.sleep(random.gammavariate(.99,1.99))
         if len(df) == 0:
