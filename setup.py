@@ -3,11 +3,11 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as readme_file:
     readme = readme_file.read()
 
-requirements = ["pandas>=0.24.2", "numpy>=1.16.4", "requests>=2.22.0"]
+requirements = ["pandas>=0.24.2", "numpy>=1.16.4", "requests>=2.22.0", "tqdm>=4.35.0"]
 
 setup(
     name="DailyTrends",
-    version="1.0",
+    version="1.3",
     author="Leonard Vorbeck",
     author_email="leomxyy@googlemail.com",
     description="A package to receive full-scale daily Google Trends data",
