@@ -61,6 +61,7 @@ memory usage: 88.5 KB
 
 ### To-Do
 
+- Add rescale capabilities
 - Optimze multi-query search by combining it to a single request
 - Add time range
 - Add Tor-Network-based requests
