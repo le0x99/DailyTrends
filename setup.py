@@ -7,10 +7,10 @@ requirements = ["pandas>=0.24.2", "numpy>=1.16.4", "requests>=2.22.0", "tqdm>=4.
 
 setup(
     name="DailyTrends",
-    version="1.0",
+    version="2.0",
     author="Leonard Vorbeck",
     author_email="leomxyy@googlemail.com",
-    description="A package to receive full-scale daily Google Trends data",
+    description="A package to receive full-range daily Google Trends data",
     long_description=readme,
     long_description_content_type="text/markdown",
     url="https://github.com/le0x99/DailyTrends/",
