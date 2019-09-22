@@ -1,6 +1,6 @@
 #  ✨ DailyTrends ✨
 
-# **NOTE** : Overlap-Bug will be fixed at 21/09/2019
+# **NOTE** : Overlap-Bug is now fixed and requesting data for multiple keywoards now works fine.
 This lightweight API solves the problem of getting only monthly-based data for large time series when collecting Google Trends data. No login required. For unlimited requests, I will implement a Tor-based solution soon.
 
 ### Installation
