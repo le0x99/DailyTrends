@@ -27,7 +27,8 @@ def generate_intervals(overlap:int=40,
         intervals.append(start + " " + end)  
     return intervals
 
-def get_frame(q:str, time:str) -> pd.DataFrame:
+def get_frame(q:None, time:str) -> pd.DataFrame:
+    q = [q] if type(q) == str else q
     jar = requests.get("https://trends.google.com/").cookies
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
     opener.addheaders = [
@@ -39,13 +40,7 @@ def get_frame(q:str, time:str) -> pd.DataFrame:
                             "hl": "en-US",
                             "tz": -120,
                             "req": {
-                            "comparisonItem": [
-                                    {
-                                            "keyword": q,
-                                            "geo":"",
-                                            "time": time
-                                    }
-                                    ],
+                            "comparisonItem":[{'keyword': query, 'geo': '', 'time': time} for query in q] ,
                                     "category": 0,
                                     "property": "" }}
     params_0["req"] = json.dumps(params_0["req"], separators=(',', ':')) 
@@ -71,7 +66,7 @@ def get_frame(q:str, time:str) -> pd.DataFrame:
     result = opener.open(csv_url).read().decode('utf8')
     return pd.read_csv(io.StringIO(result), skiprows=range(0,1), index_col=0, header=0).asfreq("d")
 
-def collect_frames(q:str) -> list:
+def collect_frames(q:None) -> list:
     intervals = generate_intervals()
     frames = []
     for interval in tqdm(intervals):
@@ -81,6 +76,3 @@ def collect_frames(q:str) -> list:
             continue
         frames.append(df)
     return frames
-
-
-
