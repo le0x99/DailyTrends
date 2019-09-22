@@ -14,7 +14,11 @@ def aggr(x1:pd.DataFrame,
     if len(common) < 1:
         raise ValueError("Ratio could not be calculated, try bigger overlap.")
     #Calc Ratio
-    common["ratio"] = common[common.columns[0]] / common[common.columns[1]]
+    if len(x1.columns) == 1:
+        common["ratio"] = common[common.columns[0]] / common[common.columns[1]]
+    else:
+        x, y = x1.columns[0]+"_x", x1.columns[0]+"_y"
+        common["ratio"] = common[x] / common[y]   
     ratio = common["ratio"].value_counts().idxmax()
     df = x1.append(x2.drop(pd.merge(x1, x2, left_index=True, right_index=True).index)*ratio)
     return df/max(df[df.columns[0]])*100 if ratio > 1 else df
