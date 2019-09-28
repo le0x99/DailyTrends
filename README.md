@@ -78,6 +78,6 @@ memory usage: 88.5 KB
 
 ## **Disclaimer**
 
-This API is not supported by Google and is for experimental purposes only.
+This API is *not* supported by Google and is for experimental purposes only.
 
 
