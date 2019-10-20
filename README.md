@@ -1,7 +1,7 @@
 #  ✨ DailyTrends V2 ✨
-[![Downloads](https://pepy.tech/badge/dailytrends)](https://pepy.tech/project/dailytrends)
+[![Downloads](https://pepy.tech/badge/dailytrends/week)](https://pepy.tech/project/dailytrends/week)
 [![Downloads](https://pepy.tech/badge/dailytrends/month)](https://pepy.tech/project/dailytrends/month)
-# **NOTE** : Overlap-Bug is now fixed and requesting data for multiple keywoards now works fine.
+
 This lightweight API solves the problem of getting only monthly-based data for large time series when collecting Google Trends data. No login required. For unlimited requests, I will implement a Tor-based solution soon.
 
 ### Installation
