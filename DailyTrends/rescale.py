@@ -26,10 +26,15 @@ def aggr(x1:pd.DataFrame,
 def qAggr(frames:list, verbose:bool=False) -> pd.DataFrame:
     """convienent function to quick-aggregate n data pieces"""
     """IMPORTANT : input needs to be ordered where t(args[0]) < t(args[1]) < ... < t(args[-1])"""
-    try:
-        df = aggr(frames[0], frames[1], verbose=verbose)
-        for x in frames[2:]:
-            df = aggr(df, x, verbose=verbose)
-        return df.asfreq("D")
-    except:
-        return qAggr(frames[1:], verbose=verbose)
+    if len(frames) == 0:
+         raiseException("There is no data for this particular query")
+    elif len(frames) == 1:
+         return frames[0]
+    else:            
+             try:
+                 df = aggr(frames[0], frames[1], verbose=verbose)
+                 for x in frames[2:]:
+                     df = aggr(df, x, verbose=verbose)
+                 return df.asfreq("D")
+             except:
+                 return qAggr(frames[1:], verbose=verbose)
