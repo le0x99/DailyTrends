@@ -1,4 +1,4 @@
-#  ✨ DailyTrends (3.0) ✨
+#  ✨ DailyTrends [UNDER MAINTENANCE] ✨
 [![Downloads](https://pepy.tech/badge/dailytrends/week)](https://pepy.tech/project/dailytrends/week)
 [![Downloads](https://pepy.tech/badge/dailytrends/month)](https://pepy.tech/project/dailytrends/month)
 
