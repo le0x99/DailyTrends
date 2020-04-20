@@ -2,6 +2,8 @@
 [![Downloads](https://pepy.tech/badge/dailytrends/week)](https://pepy.tech/project/dailytrends/week)
 [![Downloads](https://pepy.tech/badge/dailytrends/month)](https://pepy.tech/project/dailytrends/month)
 
+
+# [!] DATE RANGE AS WELL AS COUNTRY SELECTION WILL BE FIXED AT 25.04.2020
 This lightweight API solves the problem of getting only monthly-based data for large time series when collecting Google Trends data. No login required. For unlimited requests, I will implement a Tor-based solution soon.
 
 ### Installation
