@@ -3,9 +3,14 @@
 [![Downloads](https://pepy.tech/badge/dailytrends/month)](https://pepy.tech/project/dailytrends/month)
 
 
-# [!] All bugs fixed. 
+#### [!] All bugs fixed. 
+
 - The timerange can now be specified approximately.
 - The region (geo) can now be specified.
+
+
+###  Purpose
+
 This lightweight API solves the problem of getting only monthly-based data for large time series when collecting Google Trends data. No login required. For unlimited requests, I will implement a Tor-based solution soon.
 
 ### Installation
@@ -15,25 +20,24 @@ $ pip install DailyTrends
 ```
 
 
+### Usage
 
-
-### How to use
-
-```python
+```python3
 from DailyTrends.collect import collect_data
 
 # Get the data directly into python.
 # The returned dataframe is already indexed and ready for storage/analysis.
+# the end of the series defaults to "TODAY".
+# the start of the series defaults to "2004-01-01".
+# The geo parameter defaults to "", which yields global results.
 
-data = collect_data("AMD stock",
-                    save=False, verbose=False)    
+>>> data = collect_data("AMD stock",start="2004-01-01", end="2019-07-06",
+                    geo="", save=False, verbose=False)    
+
+>>> data.info()
 ```
 
-```python
-data.info()
-```
-
-```python
+```python3
 <class 'pandas.core.frame.DataFrame'>
 DatetimeIndex: 5666 entries, 2004-01-01 to 2019-07-06
 Freq: D
@@ -44,8 +48,8 @@ memory usage: 88.5 KB
 ```
 
 ```python
-#Plotting some rolling means of the daily data
-ax=data.rolling(10).mean().plot();
+# Plotting some rolling means of the daily data
+ax = data.rolling(10).mean().plot();
 data.rolling(25).mean().plot(ax=ax);
 data.rolling(50).mean().plot(ax=ax)
 ```
@@ -53,7 +57,7 @@ data.rolling(50).mean().plot(ax=ax)
 ![image.png](1.png)
 
 ### Add your own data
-```python
+```python3
 # In this case the historic prices of the stock
 import pandas as pd
 price_data = pd.read_csv("price_data.csv")
@@ -76,12 +80,8 @@ data = collect_data(["Intel", "AMD"],
 
 ### To-Do
 
-- Add rescale capabilities
-- Add time range
 - Add Tor-Network-based requests
-- Add unique identifiers
-- Add tqdm
-- Prevent Null-Overlaps
+
 
 
 
