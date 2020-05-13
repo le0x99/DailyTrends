@@ -91,7 +91,7 @@ def collect_frames(q:None, start:str, end:str, geo:str) -> list:
     for interval in tqdm(intervals):
     
         df = get_frame(q, interval, geo)
-        print(len(df))
+        #print(len(df))
         time.sleep(random.gammavariate(.99,1.99))
         if len(df) == 0:
             continue
