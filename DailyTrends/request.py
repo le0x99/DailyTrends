@@ -1,5 +1,5 @@
 import io
-from datetime import datetime
+from datetime import datetime, date
 from dateutil.relativedelta import relativedelta as delta
 import requests
 import urllib
@@ -10,24 +10,43 @@ import numpy as np
 import time
 from tqdm import tqdm
 
-def generate_intervals(overlap:int=40,
-                       inc:int=265,
-                      start:str="2004-01-01") -> list:
+def generate_intervals(overlap:int=35,
+                       inc:int=250,
+                      init_start:str="2004-01-01", init_end:str="TODAY") -> list:
     """ 
     start defaults to "2004-01-01", which represents the entire series.
     Format : "YYYY-MM-DD"  
     """
     to_str = lambda dt_date : datetime.strftime(dt_date, "%Y-%m-%d")
     to_dt = lambda str_date : datetime.strptime(str_date, "%Y-%m-%d")
-    n_iter = 25
     intervals = []
+    if init_end == "TODAY":
+        init_end = to_dt(to_str(date.today()))
+    else:
+        init_end = to_dt(init_end)
+    init_start = to_dt(init_start)
+    duration = init_end - init_start
+    n_iter = int(duration.days / (inc - overlap))
+    if n_iter == 0:
+        return [to_str(init_start) + " " + to_str(init_end)]
     for i in range(n_iter):
-        start = "2004-01-01" if i == 0 else to_str(to_dt(end) + delta(days=-overlap))
-        end = to_str(to_dt(start) + delta(days=+inc))
-        intervals.append(start + " " + end)  
+        # Start(i) < End(i-1)
+        # End(i) > Start(i+1)
+        if i == 0:
+            end = to_str(init_end)
+            start = to_str(to_dt(end) - delta(days=+inc))
+        else:
+            last = intervals[i-1]
+            last_start, last_end = last[:10], last[11:]
+            end = to_str(to_dt(last_start) + delta(days=+overlap))[:10]
+            start = to_str(to_dt(end) - delta(days=+inc))
+            
+        intervals.append(start + " " + end)
+        
+    intervals.reverse()
     return intervals
 
-def get_frame(q:None, time:str) -> pd.DataFrame:
+def get_frame(q:None, time:str, geo:str) -> pd.DataFrame:
     q = [q] if type(q) == str else q
     jar = requests.get("https://trends.google.com/").cookies
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
@@ -37,10 +56,10 @@ def get_frame(q:None, time:str) -> pd.DataFrame:
     			("Accept", "text/plain") ]
     params_1 = None
     params_0 = {
-                            "hl": "en-US",
+                            "hl": "",
                             "tz": -120,
                             "req": {
-                            "comparisonItem":[{'keyword': query, 'geo': '', 'time': time} for query in q] ,
+                            "comparisonItem":[{'keyword': query, 'geo': geo, 'time': time} for query in q] ,
                                     "category": 0,
                                     "property": "" }}
     params_0["req"] = json.dumps(params_0["req"], separators=(',', ':')) 
@@ -66,11 +85,13 @@ def get_frame(q:None, time:str) -> pd.DataFrame:
     result = opener.open(csv_url).read().decode('utf8')
     return pd.read_csv(io.StringIO(result), skiprows=range(0,1), index_col=0, header=0).asfreq("d")
 
-def collect_frames(q:None) -> list:
-    intervals = generate_intervals()
+def collect_frames(q:None, start:str, end:str, geo:str) -> list:
+    intervals = generate_intervals(init_start=start, init_end=end)
     frames = []
     for interval in tqdm(intervals):
-        df = get_frame(q, interval)
+    
+        df = get_frame(q, interval, geo)
+        print(len(df))
         time.sleep(random.gammavariate(.99,1.99))
         if len(df) == 0:
             continue
