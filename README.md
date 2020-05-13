@@ -1,9 +1,9 @@
-#  ✨ DailyTrends [FRESH VERSION (3.1)] ✨
+#  ✨ DailyTrends [FINAL VERSION == 4.0] ✨
 [![Downloads](https://pepy.tech/badge/dailytrends/week)](https://pepy.tech/project/dailytrends/week)
 [![Downloads](https://pepy.tech/badge/dailytrends/month)](https://pepy.tech/project/dailytrends/month)
 
 
-#### [!] All bugs fixed. 
+### [!] All bugs fixed. Update to version 4.0 [!] 
 
 - The timerange can now be specified approximately.
 - The region (geo) can now be specified.
