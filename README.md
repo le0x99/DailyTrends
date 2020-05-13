@@ -49,9 +49,9 @@ memory usage: 88.5 KB
 
 ```python
 # Plotting some rolling means of the daily data
-ax = data.rolling(10).mean().plot();
-data.rolling(25).mean().plot(ax=ax);
-data.rolling(50).mean().plot(ax=ax)
+>>> ax = data.rolling(10).mean().plot();
+>>> data.rolling(25).mean().plot(ax=ax);
+>>> data.rolling(50).mean().plot(ax=ax)
 ```
 
 ![image.png](1.png)
@@ -60,18 +60,18 @@ data.rolling(50).mean().plot(ax=ax)
 ```python3
 # In this case the historic prices of the stock
 import pandas as pd
-price_data = pd.read_csv("price_data.csv")
-merged = pd.merge(price_data, data,
+>>> price_data = pd.read_csv("price_data.csv")
+>>> merged = pd.merge(price_data, data,
                   left_index=True, right_index=True)
-merged[["AMD stock: (Worldwide)", "Open"]].rolling(30).mean().plot()
+>>> merged[["AMD stock: (Worldwide)", "Open"]].rolling(30).mean().plot()
 ```
 ![image.png](2.png)
 
 ### Load multiple queries
 
 ```python
-data = collect_data(["Intel", "AMD"],
-                   save=False, verbose=False)      
+>>> data = collect_data(["Intel", "AMD"],start="2004-01-01", end="TODAY",
+                    geo="DE", save=False, verbose=False)      
                 
 ```
 
