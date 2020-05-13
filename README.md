@@ -23,7 +23,7 @@ $ pip install DailyTrends
 ### Usage
 
 ```python3
-from DailyTrends.collect import collect_data
+>>> from DailyTrends.collect import collect_data
 
 # Get the data directly into python.
 # The returned dataframe is already indexed and ready for storage/analysis.
@@ -59,7 +59,7 @@ memory usage: 88.5 KB
 ### Add your own data
 ```python3
 # In this case the historic prices of the stock
-import pandas as pd
+>>> import pandas as pd
 >>> price_data = pd.read_csv("price_data.csv")
 >>> merged = pd.merge(price_data, data,
                   left_index=True, right_index=True)
