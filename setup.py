@@ -7,7 +7,7 @@ requirements = ["pandas>=0.24.2", "numpy>=1.16.4", "requests>=2.22.0", "tqdm>=4.
 
 setup(
     name="DailyTrends",
-    version="3.0",
+    version="4.0",
     author="Leonard Vorbeck",
     author_email="leomxyy@googlemail.com",
     description="A package to receive full-range daily Google Trends data",
@@ -18,6 +18,8 @@ setup(
     install_requires=requirements,
     classifiers=[
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.6"
+        "Programming Language :: Python :: 3.5"
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     ],
 )
