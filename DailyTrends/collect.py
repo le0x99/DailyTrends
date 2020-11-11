@@ -11,6 +11,10 @@ def collect_data(q:None,start:str="2004-01-01", end:str="TODAY", geo="",
         raise TypeError("Use string for single query search / list of strings for multiple keywoards.")
     #gets the unscaled data pieces
     frames = collect_frames(q, start, end, geo)
+    for frame in frames:
+      for col in frame:
+        frame[col] = frame[col].replace("<1", 1)
+        frame[col] = frame[col].astype("int64")
     #"quick-aggregates" the data pieces and rescales the values using overlaps
     df = qAggr(frames, verbose=verbose)
     return df if not save else df.to_csv(dest)
