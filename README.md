@@ -1,4 +1,4 @@
-#  ✨ DailyTrends [FINAL VERSION == 4.1] ✨
+#  ✨ DailyTrends [FINAL VERSION == 4.2] (UNDER CONSTRUCTION) AVAILABLE AGAIN AT 2020-11-15 ✨
 [![Downloads](https://pepy.tech/badge/dailytrends/week)](https://pepy.tech/project/dailytrends/week)
 [![Downloads](https://pepy.tech/badge/dailytrends/month)](https://pepy.tech/project/dailytrends/month)
 
