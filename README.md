@@ -1,13 +1,13 @@
-#  ✨ DailyTrends [FINAL VERSION == 4.2] (UNDER CONSTRUCTION) AVAILABLE AGAIN AT 2020-11-15 ✨
-[![Downloads](https://pepy.tech/badge/dailytrends/week)](https://pepy.tech/project/dailytrends/week)
-[![Downloads](https://pepy.tech/badge/dailytrends/month)](https://pepy.tech/project/dailytrends/month)
+#  ✨ DailyTrends 4.2 ✨
+[![Downloads](https://pepy.tech/badge/dailytrends)](https://pepy.tech/project/dailytrends/week)
+[![Downloads](https://pepy.tech/badge/dailytrends)](https://pepy.tech/project/dailytrends/month)
 
 
-### [!] All bugs fixed. Update to version 4.0 [!] 
+### [!] All bugs fixed. Update to version 4.2[!] 
 
 - The timerange can now be specified approximately.
 - The region (geo) can now be specified.
-
+- Google API change, so the code was adjusted.
 
 ###  Purpose
 
