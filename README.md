@@ -1,6 +1,5 @@
 #  ✨ DailyTrends 4.2 ✨
-[![Downloads](https://pepy.tech/badge/dailytrends)](https://pepy.tech/project/dailytrends/week)
-
+[![Downloads](https://static.pepy.tech/personalized-badge/dailytrends?period=total&units=international_system&left_color=grey&right_color=green&left_text=Downloads)](https://pepy.tech/project/dailytrends)
 
 
 ### [!] All bugs fixed. Update to version 4.2[!] 
