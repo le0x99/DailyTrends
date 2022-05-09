@@ -1,10 +1,12 @@
-#  ✨ DailyTrends 4.2 (stable) ✨
+#  ✨ DailyTrends 5.0 (final/stable) ✨
 [![Downloads](https://static.pepy.tech/personalized-badge/dailytrends?period=total&units=international_system&left_color=grey&right_color=green&left_text=Downloads)](https://pepy.tech/project/dailytrends)
 
 
+🚨 ALL BUGS FIXED🚨 - Update to version 5.0
+- Fully operational after new versions of pandas broke the restructuring pipe.
+- Google API change, so the code was adjusted (again).
 - The timerange can now be specified approximately.
 - The region (geo) can now be specified.
-- Google API change, so the code was adjusted.
 
 ###  Purpose
 
