@@ -1,8 +1,6 @@
-#  ✨ DailyTrends 4.2 ✨
+#  ✨ DailyTrends 4.2 (stable) ✨
 [![Downloads](https://static.pepy.tech/personalized-badge/dailytrends?period=total&units=international_system&left_color=grey&right_color=green&left_text=Downloads)](https://pepy.tech/project/dailytrends)
 
-
-### [!] All bugs fixed. Update to version 4.2[!] 
 
 - The timerange can now be specified approximately.
 - The region (geo) can now be specified.
@@ -10,9 +8,11 @@
 
 ###  Purpose
 
-This lightweight API solves the problem of getting only monthly-based data for large time series when collecting Google Trends data. No login required. For unlimited requests, I will implement a Tor-based solution soon.
+This lightweight API solves the problem of getting only monthly-based data for large time series when collecting Google Trends data. No login required. 
 
 ### Installation
+
+Install via PyPi:
 
 ```bash
 $ pip install DailyTrends
@@ -23,20 +23,17 @@ $ pip install DailyTrends
 
 ```python3
 >>> from DailyTrends.collect import collect_data
-
-# Get the data directly into python.
-# The returned dataframe is already indexed and ready for storage/analysis.
-# the end of the series defaults to "TODAY".
-# the start of the series defaults to "2004-01-01".
-# The geo parameter defaults to "", which yields global results.
-
->>> data = collect_data("AMD stock",start="2004-01-01", end="2019-07-06",
-                    geo="", save=False, verbose=False)    
-
->>> data.info()
 ```
+Queries are submitted in a gentle manner, which can be slow (but safe) for very large series.
 
 ```python3
+>>> data = collect_data("AMD stock",start="2004-01-01", end="2019-07-06",
+                    geo="", save=False, verbose=False)  
+```                 
+           
+```python3
+>>> data.info()
+
 <class 'pandas.core.frame.DataFrame'>
 DatetimeIndex: 5666 entries, 2004-01-01 to 2019-07-06
 Freq: D
@@ -45,6 +42,10 @@ AMD stock: (Worldwide)    5666 non-null float64
 dtypes: float64(1)
 memory usage: 88.5 KB
 ```
+- The returned dataframe is already indexed and ready for storage/analysis.
+- The end of the series defaults to "TODAY".
+- The start of the series defaults to "2004-01-01".
+- The geo parameter defaults to "", which yields global results.
 
 ```python
 # Plotting some rolling means of the daily data
