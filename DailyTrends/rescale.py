@@ -20,7 +20,8 @@ def aggr(x1:pd.DataFrame,
         x, y = x1.columns[0]+"_x", x1.columns[0]+"_y"
         common["ratio"] = common[x] / common[y]   
     ratio = common["ratio"].value_counts().idxmax()
-    df = x1.append(x2.drop(pd.merge(x1, x2, left_index=True, right_index=True).index)*ratio)
+    #df = x1.append(x2.drop(pd.merge(x1, x2, left_index=True, right_index=True).index)*ratio)
+    df = pd.concat([x1, x2.drop(pd.merge(x1, x2, left_index=True, right_index=True).index)*ratio])
     return df/max(df[df.columns[0]])*100 if ratio > 1 else df
 
 def qAggr(frames:list, verbose:bool=True) -> pd.DataFrame:
